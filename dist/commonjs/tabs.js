@@ -74,14 +74,6 @@ var Tabs = exports.Tabs = (_dec = (0, _aureliaFramework.customElement)('tabs'), 
   }
 
   Tabs.prototype.attached = function attached() {
-    if (this.topShiftInPixels !== undefined) {
-      this.tabs.forEach(function (tab) {
-        tab.setInnerScroll();
-      });
-    }
-  };
-
-  Tabs.prototype.bind = function bind() {
     var _this = this;
 
     this.tabs.forEach(function (tab) {
@@ -93,12 +85,17 @@ var Tabs = exports.Tabs = (_dec = (0, _aureliaFramework.customElement)('tabs'), 
     });
 
     this.activeTab.show();
+
+    if (this.topShiftInPixels !== undefined) {
+      this.tabs.forEach(function (tab) {
+        tab.setInnerScroll();
+      });
+    }
   };
 
   Tabs.prototype.onTabClick = function onTabClick(tab) {
     _customElementHelper.customElementHelper.dispatchEvent(this.element, 'change', {
-      tab: tab,
-      test: 'baba'
+      tab: tab
     });
 
     this.activeTab.hide();

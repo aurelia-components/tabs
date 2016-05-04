@@ -63,14 +63,6 @@ export let Tabs = (_dec = customElement('tabs'), _dec2 = inject(Element), _dec3 
   }
 
   attached() {
-    if (this.topShiftInPixels !== undefined) {
-      this.tabs.forEach(tab => {
-        tab.setInnerScroll();
-      });
-    }
-  }
-
-  bind() {
     this.tabs.forEach(tab => {
       if (tab.active) {
         this.activeTab = tab;
@@ -80,12 +72,17 @@ export let Tabs = (_dec = customElement('tabs'), _dec2 = inject(Element), _dec3 
     });
 
     this.activeTab.show();
+
+    if (this.topShiftInPixels !== undefined) {
+      this.tabs.forEach(tab => {
+        tab.setInnerScroll();
+      });
+    }
   }
 
   onTabClick(tab) {
     customElementHelper.dispatchEvent(this.element, 'change', {
-      tab: tab,
-      test: 'baba'
+      tab: tab
     });
 
     this.activeTab.hide();
