@@ -19,14 +19,6 @@ export class Tabs  {
   }
 
   attached() {
-    if (this.topShiftInPixels !== undefined) {
-      this.tabs.forEach(tab => {
-        tab.setInnerScroll();
-      });
-    }
-  }
-
-  bind() {
     this.tabs.forEach(tab => {
       if (tab.active) {
         this.activeTab = tab;
@@ -36,6 +28,12 @@ export class Tabs  {
     });
 
     this.activeTab.show();
+
+    if (this.topShiftInPixels !== undefined) {
+      this.tabs.forEach(tab => {
+        tab.setInnerScroll();
+      });
+    }
   }
 
   onTabClick(tab) {
