@@ -40,8 +40,7 @@ export class Tabs  {
 
   onTabClick(tab) {
     customElementHelper.dispatchEvent(this.element, 'change', {
-      tab: tab,
-      test: 'baba'
+      tab: tab
     });
 
     this.activeTab.hide();
